@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>轻松一刻 · 场景灵感</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f5f3f0;
+      color: #2b2b2b;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* 深色头图 (hero) */
+    .hero {
+      background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+      padding: 4rem 1.5rem 3.5rem;
+      margin: 0 -1.5rem 0;
+      border-radius: 0 0 3rem 3rem;
+      color: #f1f5f9;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: #f5f3f0;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0.6rem auto 0;
+      opacity: 0.85;
+      font-weight: 300;
+    }
+
+    /* 顶部导航 (简洁) */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .top-nav .logo {
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: #1e293b;
+      background: #e8e5df;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+    }
+
+    .top-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .top-nav ul li a {
+      text-decoration: none;
+      color: #2b2b2b;
+      font-weight: 400;
+      font-size: 0.95rem;
+      border-bottom: 1px solid transparent;
+      transition: border 0.2s;
+    }
+
+    .top-nav ul li a:hover {
+      border-bottom: 1px solid #b8860b;
+    }
+
+    /* 强调色链接 (通用) */
+    a {
+      color: #b8860b;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: #8b6508;
+    }
+
+    /* 正文区 (浅色) */
+    .content-area {
+      background: #ffffff;
+      border-radius: 2rem;
+      padding: 2.5rem 2rem;
+      margin: 2.2rem 0 2.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .intro-block {
+      margin-bottom: 2.8rem;
+    }
+
+    .intro-block h2 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      border-left: 5px solid #b8860b;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .intro-block p {
+      font-size: 1.05rem;
+      color: #3d3d3d;
+    }
+
+    /* 三个场景卡片模块 */
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin: 2.5rem 0 2rem;
+    }
+
+    .scene-card {
+      background: #faf9f7;
+      border-radius: 1.5rem;
+      padding: 1.8rem 1.2rem 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      border: 1px solid #eae7e2;
+    }
+
+    .scene-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .scene-card .emoji {
+      font-size: 2.2rem;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .scene-card h3 {
+      font-weight: 500;
+      font-size: 1.3rem;
+      margin: 0.5rem 0 0.3rem;
+    }
+
+    .scene-card p {
+      color: #4a4a4a;
+      font-size: 0.95rem;
+    }
+
+    /* 常见说明 (FAQ 摘要) */
+    .faq-wrap {
+      margin: 2.2rem 0 1.8rem;
+    }
+
+    .faq-item {
+      background: #f9f8f5;
+      border-radius: 1.2rem;
+      padding: 1.2rem 1.6rem;
+      margin-bottom: 0.9rem;
+      border: 1px solid #ece8e2;
+    }
+
+    .faq-item summary {
+      font-weight: 500;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: #2b2b2b;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-item summary::after {
+      content: '＋';
+      font-size: 1.3rem;
+      color: #b8860b;
+    }
+
+    .faq-item[open] summary::after {
+      content: '－';
+    }
+
+    .faq-item p {
+      margin-top: 0.7rem;
+      color: #4e4e4e;
+      padding-right: 1rem;
+    }
+
+    .footer-note {
+      text-align: center;
+      padding: 2rem 0 2.5rem;
+      color: #6b6b6b;
+      font-size: 0.9rem;
+      border-top: 1px solid #ddd8d0;
+      margin-top: 0.5rem;
+    }
+
+    .footer-note a {
+      text-decoration: underline;
+      color: #b8860b;
+    }
+
+    /* 响应式 */
+    @media (max-width: 860px) {
+      .hero { padding: 3rem 1.2rem 2.8rem; }
+      .hero h1 { font-size: 2rem; }
+      .scenes-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .top-nav ul { gap: 1rem; }
+      .content-area { padding: 1.8rem 1.2rem; }
+    }
+
+    @media (max-width: 500px) {
+      .top-nav { flex-direction: column; gap: 0.6rem; }
+      .top-nav ul { flex-wrap: wrap; justify-content: center; }
+      .hero h1 { font-size: 1.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部导航 -->
+  <div class="page">
+    <nav class="top-nav">
+      <span class="logo">· 场景集</span>
+      <ul>
+        <li><a href="#">灵感</a></li>
+        <li><a href="#">轻松</a></li>
+        <li><a href="#">故事</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- 深色头图 hero -->
+  <section class="hero">
+    <h1>PG娱乐 · 生活场景</h1>
+    <p>从日常小聚到独处时光，发现让人放松的陪伴方式。</p>
+  </section>
+
+  <div class="page">
+    <!-- 主要正文区 (浅色) -->
+    <div class="content-area">
+
+      <!-- 核心介绍 (自然) -->
+      <div class="intro-block">
+        <h2>不只是娱乐</h2>
+        <p>
+          每个人心里都藏着几个让自己忘记时间的角落。或是一段旋律，或是一场桌游，又或者只是屏幕那端偶尔闪过的画面。<a href="https://site-pgent.com">PG娱乐</a> 所提供的正是一种轻巧的节奏——不必太较真，也不至于无聊。它更像一个转场，让忙碌的缝隙里多一点点自在。
+        </p>
+      </div>
+
+      <!-- 三个场景模块 -->
+      <div class="scenes-grid">
+        <div class="scene-card">
+          <span class="emoji">☕</span>
+          <h3>午后小憩</h3>
+          <p>周末咖啡馆里，耳机放着轻快节奏，手机屏幕上是喜欢的节目。一个人也充实，不紧不慢。</p>
+        </div>
+        <div class="scene-card">
+          <span class="emoji">🎲</span>
+          <h3>好友切磋</h3>
+          <p>三两个人，一局轻松的游戏，输赢无所谓，笑声是唯一的配乐。适合任何一场聚会。</p>
+        </div>
+        <div class="scene-card">
+          <span class="emoji">🌙</span>
+          <h3>睡前消遣</h3>
+          <p>关掉工作消息，留一盏灯，翻翻有趣的互动内容。身体和精神一起慢慢松弛下来。</p>
+        </div>
+      </div>
+
+      <!-- 常见说明 (FAQ 摘要) -->
+      <div class="faq-wrap">
+        <div class="faq-item">
+          <details>
+            <summary>这种娱乐方式适合哪些人群？</summary>
+            <p>没有严格门槛。无论是上班族、学生，还是偶尔想换换节奏的人，都可以找到自己舒服的参与方式。核心是放松，而非竞技。</p>
+          </details>
+        </div>
+        <div class="faq-item">
+          <details>
+            <summary>需要很多时间或设备吗？</summary>
+            <p>不需要。多数场景只需一部手机或电脑，几分钟就能进入状态。你可以随时暂停，不会有追赶压力。</p>
+          </details>
+        </div>
+        <div class="faq-item">
+          <details>
+            <summary>内容安全吗？会不会太复杂？</summary>
+            <p>内容偏向轻松日常，没有激烈或让人不适的元素。界面和规则也设计得直观，新手很容易上手。</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- 自然嵌入链接的句子 (再次出现但不同语境) -->
+      <p style="margin-top: 1.2rem; color: #3d3d3d; font-size: 1rem;">
+        如果你好奇这种陪伴式的氛围，不妨在空闲时了解下 <a href="https://site-pgent.com">PG娱乐</a> 具体有哪些选择。每个人的节奏不同，但放松的感受是共通的。
+      </p>
+
+    </div><!-- content-area end -->
+
+    <!-- 页脚 -->
+    <footer class="footer-note">
+      <p>基于生活灵感 · 简单 真实 自然</p>
+      <p style="margin-top: 0.3rem;">了解更多 · <a href="https://site-pgent.com">PG娱乐</a></p>
+    </footer>
+  </div>
+
+</body>
+</html>
